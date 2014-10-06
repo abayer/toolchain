@@ -9,7 +9,7 @@
     sudo_user: root
     user: name="jenkins" comment="Jenkins Slave" 
           shell="/bin/bash" group=jenkins 
-          groups=sshusers
+          groups=sshusers,docker
           password={{pass_word}}
     when: setup_password
 
@@ -43,3 +43,8 @@
     sudo: yes
     sudo_user: root
     file: src=/home/jenkins dest=/home/hudson state=link owner=jenkins group=jenkins
+
+  - name: setup user | restart docker
+    sudo: yes
+    sudo_user: root
+    service: name=docker state=restarted
