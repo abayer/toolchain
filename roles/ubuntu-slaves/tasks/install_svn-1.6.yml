@@ -6,6 +6,7 @@
   with_items:
     - libsvn1=1.8*
     - python-svn=1.7.8*
+  ignore_errors: True
 
 - name: Install_svn-1.6 | downgrade source.list 
   sudo: yes
